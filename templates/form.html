@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма ввода данных</title>
+  <link rel="stylesheet" href="../static/styles.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const phoneInputs = document.querySelectorAll('input[type="tel"]');
+      
+      phoneInputs.forEach(input => {
+        input.addEventListener('input', (event) => {
+          const value = event.target.value;
+
+          // Удаляем любые символы, кроме цифр
+          event.target.value = value.replace(/\D/g, '');
+
+          // Проверяем длину введенных данных
+          if (value.length > 11) {
+            event.target.value = value.substring(0, 11); // Ограничиваем до 12 символов
+          }
+
+          // Устанавливаем сообщение об ошибке, если длина меньше 12
+          if (event.target.value.length !== 11) {
+            event.target.setCustomValidity("Номер должен содержать ровно 11 цифр.");
+          } else {
+            event.target.setCustomValidity("");
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Ввод данных студента</h1>
+  </header>
+  <main>
+    <form class="student-form" action="/submit" method="POST">
+      <div class="form-column">
+        <label for="fullName">ФИО Студента:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="birthDate">Дата Рождения:</label>
+        <input type="date" id="birthDate" name="birthDate" required>
+
+        <label for="city">Город:</label>
+        <input type="text" id="city" name="city">
+
+        <label for="address">Адрес:</label>
+        <input type="text" id="address" name="address" required>
+
+        <label for="phoneNumber">Номер телефона:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="\d*" title="Введите только цифры" required>
+
+        <label for="group">Группа:</label>
+        <input type="text" id="group" name="group">
+      </div>
+
+      <div class="form-column">
+        <label for="motherName">ФИО Мамы:</label>
+        <input type="text" id="motherName" name="motherName">
+
+        <label for="motherWork">Место работы Мамы:</label>
+        <input type="text" id="motherWork" name="motherWork">
+
+        <label for="fatherName">ФИО Папы:</label>
+        <input type="text" id="fatherName" name="fatherName">
+
+        <label for="fatherWork">Место работы Папы:</label>
+        <input type="text" id="fatherWork" name="fatherWork">
+
+        <label for="motherPhone">Номер телефона Мамы:</label>
+        <input type="tel" id="motherPhone" name="motherPhone" pattern="\d*" title="Введите только цифры">
+
+        <label for="fatherPhone">Номер телефона Папы:</label>
+        <input type="tel" id="fatherPhone" name="fatherPhone" pattern="\d*" title="Введите только цифры">
+      </div>
+
+      <div class="form-full-width">
+        <label for="familyType">Тип семьи:</label>
+        <select id="familyType" name="familyType">
+          <option value="Полная">Полная</option>
+          <option value="Неполная">Неполная</option>
+        </select>
+
+        <label for="livingWith">С кем проживает:</label>
+        <input type="text" id="livingWith" name="livingWith">
+
+        <label for="previousAddress">Адрес проживания (если иногородний):</label>
+        <input type="text" id="previousAddress" name="previousAddress">
+
+        <label for="socialStatus">Социальный статус:</label>
+        <input type="text" id="socialStatus" name="socialStatus">
+
+        <label for="hobbies">Хобби:</label>
+        <input type="text" id="hobbies" name="hobbies">
+
+        <label for="nationality">Национальность:</label>
+        <input type="text" id="nationality" name="nationality">
+
+        <label for="citizenship">Гражданство:</label>
+        <input type="text" id="citizenship" name="citizenship">
+
+        <label for="rwpOrVnz">РВП или ВНЖ:</label>
+        <input type="text" id="rwpOrVnz" name="rwpOrVnz">
+
+        <label for="documentExpiration">Срок действия документа:</label>
+        <input type="date" id="documentExpiration" name="documentExpiration">
+
+        <label for="lossOfBreadwinner">Потеря кормильца (отец/мать):</label>
+        <input type="text" id="lossOfBreadwinner" name="lossOfBreadwinner">
+
+        <label for="isPensioner">Пенсионер:</label>
+        <input type="checkbox" id="isPensioner" name="isPensioner">
+
+        <label for="isDisabled">Инвалид:</label>
+        <input type="checkbox" id="isDisabled" name="isDisabled">
+
+        <label for="isOrphan">Сирота:</label>
+        <input type="checkbox" id="isOrphan" name="isOrphan">
+
+        <label for="isGuardian">Опекун:</label>
+        <input type="checkbox" id="isGuardian" name="isGuardian">
+
+        <button type="submit" class="animated-button">Отправить</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>

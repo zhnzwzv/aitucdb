@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ-панель</title>
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Админ-панель</h1>
+    <a href="/logout" class="animated-button">Выйти</a>
+  </header>
+
+  <main>
+    <form method="POST" class="age-filter-form">
+      <label for="age">Фильтровать по возрасту:</label>
+      <div class="age-filter-input">
+        <input type="number" id="age" name="age" placeholder="Введите возраст">
+        <button type="submit" class="button">Применить</button>
+      </div>
+    </form>
+
+    <!-- Форма для фильтрации данных -->
+    <form class="filter-form" method="POST" action="/admin">
+      <div class="filter-inputs">
+        <input type="text" name="name" placeholder="Поиск по имени">
+        <input type="text" name="city" placeholder="Поиск по городу">
+        <input type="text" name="phone" placeholder="Поиск по номеру">
+        <input type="text" name="group" placeholder="Поиск по группе">
+        <input type="text" name="family_type" placeholder="Тип семьи">
+        <input type="text" name="living_with" placeholder="С кем живет">
+        <input type="text" name="social_status" placeholder="Социальный статус">
+        <input type="text" name="nationality" placeholder="Национальность">
+        <input type="text" name="citizenship" placeholder="Гражданство">
+        <input type="text" name="rwp_or_vnz" placeholder="РВП или ВНЖ">
+        <input type="date" name="document_expiration" placeholder="Срок действия документа">
+      </div>
+      <div>
+        <label><input type="checkbox" name="loss_of_breadwinner"> Потеря кормильца</label>
+        <label><input type="checkbox" name="is_pensioner"> Пенсионер</label>
+        <label><input type="checkbox" name="is_disabled"> Инвалид</label>
+        <label><input type="checkbox" name="is_orphan"> Сирота</label>
+        <label><input type="checkbox" name="is_guardian"> Опекун</label>
+      </div>
+      <button type="submit" class="animated-button">Применить фильтр</button>
+    </form>
+    
+
+    <!-- Таблица с данными студентов -->
+    <table>
+      <thead>
+        <tr>
+          <th>Действия</th>
+          <th>ФИО</th>
+          <th>Дата рождения</th>
+          <th>Город</th>
+          <th>Адрес</th>
+          <th>Телефон</th>
+          <th>Группа</th>
+          <th>ФИО Мамы</th>
+          <th>Работа Мамы</th>
+          <th>ФИО Папы</th>
+          <th>Работа Папы</th>
+          <th>Телефон Мамы</th>
+          <th>Телефон Папы</th>
+          <th>Тип семьи</th>
+          <th>С кем живет</th>
+          <th>Адрес проживания (если иногородний)</th>
+          <th>Социальный статус</th>
+          <th>Хобби</th>
+          <th>Национальность</th>
+          <th>Гражданство</th>
+          <th>РВП или ВНЖ:</th>
+          <th>Срок действия документа</th>
+          <th>Потеря кормильца</th>
+          <th>Пенсионер</th>
+          <th>Инвалид</th>
+          <th>Сирота</th>
+          <th>Опекун</th>
+        </tr>
+      </thead>
+      <tbody>
+        <a href="/export" class="export-button">Экспортировать в Excel</a>
+        {% for student in students %}
+        <tr>
+          <td>
+            <a href="/edit_student_page/{{ student.id }}" class="editbutton">Редактировать</a>
+            <form method="POST" action="/delete_student/{{ student.id }}" class="delete-form" style="display:inline;">
+              <button type="submit" class="deletebutton">Удалить</button>
+            </form>
+          </td>
+          <!-- <a href="/export" class="export-button">Экспортировать в Excel</a> -->
+          <td>{{ student.full_name }}</td>
+          <td>{{ student.birth_date }}</td>
+          <td>{{ student.city }}</td>
+          <td>{{ student.address }}</td>
+          <td>{{ student.phone_number }}</td>
+          <td>{{ student.group_name }}</td>
+          <td>{{ student.mother_name }}</td>
+          <td>{{ student.mother_work }}</td>
+          <td>{{ student.father_name }}</td>
+          <td>{{ student.father_work }}</td>
+          <td>{{ student.mother_phone }}</td>
+          <td>{{ student.father_phone }}</td>
+          <td>{{ student.family_type }}</td>
+          <td>{{ student.living_with }}</td>
+          <td>{{ student.previous_address }}</td>
+          <td>{{ student.social_status }}</td>
+          <td>{{ student.hobbies }}</td>
+          <td>{{ student.nationality }}</td>
+          <td>{{ student.citizenship }}</td>
+          <td>{{ student.rwp_or_vnz }}</td>
+          <td>{{ student.document_expiration }}</td>
+          <td>{{ student.loss_of_breadwinner }}</td>
+          <td>{{ student.is_pensioner }}</td>
+          <td>{{ student.is_disabled }}</td>
+          <td>{{ student.is_orphan }}</td>
+          <td>{{ student.is_guardian }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

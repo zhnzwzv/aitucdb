@@ -1,0 +1,78 @@
+<!-- edit_page_student.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактирование студента</title>
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Редактирование студента</h1>
+    <a href="/logout" class="animated-button">Выйти</a>
+  </header>
+
+  <main>
+    <form method="POST" action="/edit_student/{{ student.id }}" class="edit-form">
+      <div class="form-group">
+        <label for="full_name">ФИО:</label>
+        <input type="text" id="full_name" name="full_name" value="{{ student.full_name }}" required>
+      </div>
+      <div class="form-group">
+        <label for="birth_date">Дата рождения:</label>
+        <input type="date" id="birth_date" name="birth_date" value="{{ student.birth_date }}" required>
+      </div>
+      <div class="form-group">
+        <label for="city">Город:</label>
+        <input type="text" id="city" name="city" value="{{ student.city }}" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Адрес:</label>
+        <input type="text" id="address" name="address" value="{{ student.address }}" required>
+      </div>
+      <div class="form-group">
+        <label for="phone_number">Телефон:</label>
+        <input type="tel" id="phone_number" name="phone_number" value="{{ student.phone_number }}" required>
+      </div>
+      <div class="form-group">
+        <label for="group_name">Группа:</label>
+        <input type="text" id="group_name" name="group_name" value="{{ student.group_name }}" required>
+      </div>
+      <div class="form-group">
+        <label for="mother_name">ФИО Мамы:</label>
+        <input type="text" id="mother_name" name="mother_name" value="{{ student.mother_name }}" required>
+      </div>
+      <div class="form-group">
+        <label for="mother_work">Работа Мамы:</label>
+        <input type="text" id="mother_work" name="mother_work" value="{{ student.mother_work }}" required>
+      </div>
+      <div class="form-group">
+        <label for="father_name">ФИО Папы:</label>
+        <input type="text" id="father_name" name="father_name" value="{{ student.father_name }}" required>
+      </div>
+      <div class="form-group">
+        <label for="father_work">Работа Папы:</label>
+        <input type="text" id="father_work" name="father_work" value="{{ student.father_work }}" required>
+      </div>
+      <div class="form-group">
+        <label for="mother_phone">Телефон Мамы:</label>
+        <input type="tel" id="mother_phone" name="mother_phone" value="{{ student.mother_phone }}" required>
+      </div>
+      <div class="form-group">
+        <label for="father_phone">Телефон Папы:</label>
+        <input type="tel" id="father_phone" name="father_phone" value="{{ student.father_phone }}" required>
+      </div>
+      <div class="form-group">
+        <label for="family_type">Тип семьи:</label>
+        <input type="text" id="family_type" name="family_type" value="{{ student.family_type }}" required>
+      </div>
+      <div class="form-group">
+        <label for="living_with">С кем живет:</label>
+        <input type="text" id="living_with" name="living_with" value="{{ student.living_with }}" required>
+      </div>
+      <button type="submit" class="animated-button">Сохранить изменения</button>
+    </form>
+  </main>
+</body>
+</html>

@@ -1,0 +1,468 @@
+/* Общий стиль */
+body {
+    margin  : 0;
+    font-family: Arial, sans-serif;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+
+  
+/* reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  min-height: 100vh;
+  padding: 20px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+/* other */
+.info {
+  margin: 20px 0;
+  text-align: center;
+}
+
+p {
+  color: #2e2e2e;
+  margin-bottom: 20px;
+}
+
+
+/* block-$ */
+.block-effect {
+  font-size: calc(8px + 6vw);
+}
+
+.block-reveal {
+  --t: calc(var(--td) + var(--d));
+
+  color: transparent;
+  padding: 4px;
+
+  position: relative;
+  overflow: hidden;
+
+  animation: revealBlock 0s var(--t) forwards;
+}
+
+.block-reveal::after {
+  content: '';
+
+  width: 0%;
+  height: 100%;
+  padding-bottom: 4px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background: var(--bc);
+  animation: revealingIn var(--td) var(--d) forwards, revealingOut var(--td) var(--t) forwards;
+}
+
+
+/* animations */
+@keyframes revealBlock {
+  100% {
+    color: #ffffff;
+  }
+}
+
+@keyframes revealingIn {
+
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes revealingOut {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+
+}
+
+.abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsl(0, 0%, 100%);
+  font-size: 16px;
+}
+
+
+
+
+  
+  @media (max-width: 768px) {
+    .filter-form input {
+      flex: 1 1 100%; 
+    }
+  
+    .filter-form button {
+      max-width: 100%;
+    }
+  }
+  
+
+
+/* Таблица */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: #333333;
+  color: #ffffff;
+  border-radius: 10px;
+
+  display: block;
+  overflow-x: auto;
+
+}
+
+table th, table td {
+  border: 1px solid #555555;
+  padding: 10px;
+  text-align: center;
+}
+
+table th {
+  background-color: #444444;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #3a3a3a;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column; /* Поля и кнопка располагаются в колонке */
+  align-items: center;
+  gap: 10px; /* Расстояние между полями и кнопкой */
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.filter-inputs {
+  display: flex;
+  gap: 10px; /* Расстояние между полями */
+  flex-wrap: wrap; /* Поля переносятся на новую строку при необходимости */
+  justify-content: center; /* Центрирование полей */
+  width: 100%;
+}
+
+.filter-inputs input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #555555;
+  border-radius: 5px; /* Закругленные углы */
+  background-color: #444444; /* Тёмный фон */
+  color: #ffffff; /* Белый текст */
+  flex: 1 1 calc(25% - 20px); /* Равномерное распределение полей */
+  min-width: 200px; /* Минимальная ширина */
+  box-sizing: border-box; /* Учитывает padding и border */
+}
+
+.filter-inputs input:focus {
+  outline: none;
+  border-color: #c2fbd7; 
+  box-shadow: 0 0 5px rgba(44, 187, 99, 0.5); 
+}
+
+.filter-form button {
+  background-color: #c2fbd7; 
+  color: green; 
+  border-radius: 100px; 
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.filter-form button:hover {
+  transform: scale(1.1); /* Лёгкое увеличение при наведении */
+  box-shadow: rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px;
+}
+
+
+  
+  /* Заголовок */
+  header h1 {
+    margin: 0;
+    padding: 20px;
+    background-color: #333333;
+    color: #fffafb;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    line-height: 1.5;
+  }
+  
+  .student-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    text-align: left;
+    color: #f4f4f4;
+    margin: 0 auto; /* Центрирование формы */
+  }
+  
+  
+.login-form {
+  display: contents;
+  flex-direction: column;
+  gap: 20px; 
+  background-color: #333333;
+  padding: 40px;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  margin: 20px; 
+  text-align: left;
+  color: #f4f4f4;
+}
+
+  .login-form label {
+    font-size: 16px;
+  }
+
+.login-form  input {
+  padding: 10px;
+  font-size: 16px;
+  border: 3px solid #555555;
+  border-radius: 20px;
+  background-color: #444444;
+  color: #ffffff;
+  /* width: 100%; */
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #c2fbd7; 
+  box-shadow: 0 0 5px rgba(44, 187, 99, 0.5);
+}
+
+
+
+
+
+  .form-column {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .form-full-width {
+    flex: 1 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0px;
+  }
+  
+  .student-form input,
+  .student-form select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #555555;
+    border-radius: 5px;
+    background-color: #444444;
+    color: #ffffff;
+  }
+  
+  .animated-button {
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 20px 40px; 
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px; 
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 0px; 
+}
+
+.animated-button:hover {
+    box-shadow: rgba(44, 187, 99, .35) 0 -25px 18px -14px inset, rgba(44, 187, 99, .25) 0 1px 2px, rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px, rgba(44, 187, 99, .25) 0 8px 16px, rgba(44, 187, 99, .25) 0 16px 32px;
+    transform: scale(1.1) rotate(-1deg); 
+}
+
+
+
+
+
+
+
+/* Центрирование кнопок с расстоянием */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Добавлен промежуток между кнопками */
+
+    /* overflow-x: hidden; */
+    width: 100%;
+}
+
+  
+  /* Подписи к полям */
+  label {
+    font-size: 16px;
+  }
+ 
+  .deletebutton{
+    background-color: #FF0000; /* Насыщенный зелёный */
+    color: #ffffff; /* Белый текст */
+    border: none;
+    border-radius: 10px; /* Закругленные углы */
+    padding: 5px 10px; /* Увеличенные отступы */
+    font-size: 11px; /* Крупный текст */
+    font-weight: bold;
+    text-transform: uppercase; /* Верхний регистр текста */
+    text-decoration: none; /* Убирает подчёркивание */
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Лёгкая тень */
+  }
+
+
+  .editbutton{
+    background-color: #4CAF50; /* Насыщенный зелёный */
+    color: #ffffff; /* Белый текст */
+    border: none;
+    border-radius: 10px; /* Закругленные углы */
+    padding: 5px 10px; /* Увеличенные отступы */
+    font-size: 11px; /* Крупный текст */
+    font-weight: bold;
+    text-transform: uppercase; /* Верхний регистр текста */
+    text-decoration: none; /* Убирает подчёркивание */
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Лёгкая тень */
+  }
+  
+
+
+  .export-button {
+    background-color: #4CAF50; /* Насыщенный зелёный */
+    color: #ffffff; /* Белый текст */
+    border: none;
+    border-radius: 10px; /* Закругленные углы */
+    padding: 15px 30px; /* Увеличенные отступы */
+    font-size: 18px; /* Крупный текст */
+    font-weight: bold;
+    text-transform: uppercase; /* Верхний регистр текста */
+    text-decoration: none; /* Убирает подчёркивание */
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Лёгкая тень */
+  }
+  
+  .export-button:hover {
+    background-color: #45a049; /* Более яркий зелёный при наведении */
+    transform: scale(1.05); /* Лёгкое увеличение */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Глубокая тень при наведении */
+  }
+  
+  .export-button:active {
+    background-color: #3e8e41; /* Затемнённый цвет при нажатии */
+    transform: scale(0.98); /* Лёгкое сжатие */
+  }
+  
+
+  
+/* Новый стиль для формы фильтрации по возрасту */
+.age-filter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.age-filter-input {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
+}
+
+.age-filter-input input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #555555;
+  border-radius: 5px;
+  background-color: #444444;
+  color: #ffffff;
+  width: 150px;
+  min-width: 150px;
+}
+
+.age-filter-input button {
+  background-color: #c2fbd7;
+  color: green;
+  border-radius: 100px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.age-filter-input button:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(44, 187, 99, .25) 0 2px 4px, rgba(44, 187, 99, .25) 0 4px 8px;
+}
+
+  
